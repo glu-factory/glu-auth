@@ -1,7 +1,8 @@
 require('dotenv').config();
 const fetch = require('node-fetch');
+const cors = require('micro-cors')();
 
-module.exports = (req, res) => {
+const handler = (req, res) => {
   const { access_token, redirect_uri } = req.query;
   if (!access_token) {
     return res.status(400).send(`No access_token sent`);
@@ -27,3 +28,5 @@ module.exports = (req, res) => {
     .then(text => res.status(200).send(text))
     .catch(err => res.status(500).send(err));
 };
+
+module.exports = cors(handler);
