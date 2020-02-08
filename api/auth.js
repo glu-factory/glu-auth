@@ -13,8 +13,6 @@ const handler = (req, res) => {
     return res.status(400).send(`No redirect_uri sent`);
   }
 
-  return res.status(200).send(JSON.stringify(process.env));
-  console.log('fetching...');
   fetch('', {
     method: 'post',
     body: JSON.stringify({
@@ -28,12 +26,9 @@ const handler = (req, res) => {
       'Content-Type': 'application/json'
     }
   })
-    .then(res => console.log('got response', res) || res.text())
-    .then(text => console.log('got text', text) || res.status(200).send(text))
-    .catch(err => {
-      console.error('error', err);
-      res.status(500).send(err);
-    });
+    .then(res => res.text())
+    .then(text => res.status(200).send(text))
+    .catch(err => res.status(500).send(err));
 };
 
 module.exports = cors(handler);
