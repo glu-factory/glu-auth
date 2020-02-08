@@ -26,7 +26,10 @@ const handler = (req, res) => {
   })
     .then(res => res.text())
     .then(text => res.status(200).send(text))
-    .catch(err => res.status(500).send(err));
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(err);
+    });
 };
 
 module.exports = cors(handler);
