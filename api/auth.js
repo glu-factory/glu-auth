@@ -1,4 +1,6 @@
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 const fetch = require('node-fetch');
 const cors = require('micro-cors')();
 
@@ -16,8 +18,8 @@ const handler = (req, res) => {
   fetch('', {
     method: 'post',
     body: JSON.stringify({
-      client_id: process.env.client_id,
-      client_secret: process.env.client_secret,
+      client_id: process.env.GITHUB_CLIENT_ID,
+      client_secret: process.env.GITHUB_CLIENT_SECRET,
       code: access_token,
       redirect_uri,
       state: 'glu'
