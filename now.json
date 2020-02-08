@@ -1,8 +1,6 @@
 {
-  "build": {
-    "env": {
-      "GITHUB_CLIENT_ID": "@client-id",
-      "clientGITHUB_CLIENT_SECRET": "@client-secret"
-    }
+  "env": {
+    "GITHUB_CLIENT_ID": "@client-id",
+    "GITHUB_CLIENT_SECRET": "@client-secret"
   }
 }
